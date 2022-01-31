@@ -32,7 +32,10 @@ more expensive at the same capacity. Depending on your use, you need for storage
     "4":"Every Computer has a graphics card, they output graphics on to the display. A lot of CPUs have graphics cards integrated in them\n\
 but there are dedicated graphics cards that are very fast at doing simple calculations that is important for tasks such as processing game graphics.",
     "5":"Motherboards used to carry information around to each component, but they don't too much specification differences other than build quality.\n\
-Just make sure that your motherboard is compatible with all you components, expecially the CPU and the RAM"
+Just make sure that your motherboard is compatible with all you components, expecially the CPU and the RAM",
+    "6":"If you're building a desktop yourself, you'll need to think about what power supplies you'll need. Power supplies convert AC wall power to DC power\n\
+More expensive power supplies can often handle more power. You'll need to look at mostly what you're CPU and GPU power draw is and choose a power supply\n\
+that has a rating 1.4 more than that, this is because power supplies work most reliably when they're not operating at 100 percent load "
 }
 
 
