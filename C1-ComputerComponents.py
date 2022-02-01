@@ -42,7 +42,7 @@ that has a rating 1.4 more than that, this is because power supplies work most r
 
 def getUsage():
     Usage = int(input("\nWhat programs do you use? 1.Simple programs like web browsers and text editors\
-    2.Programming IDE such as <visual studio Code> 4.Modern Games: 3.Large programs like Video editing or 3D modeling: "))
+    2.Programming IDE such as <visual studio Code> 3.Modern Games: 4.Large programs like Video editing or 3D modeling: "))
     return Usage
     
 def GetPortability():
@@ -76,7 +76,7 @@ def FindDesktopMatch(MyType):
     print("CPU:\t\t ",ConvertedFile[indstore][0])
     print("Motherboard:\t ",ConvertedFile[indstore][1])
     print("RAM:\t\t ",ConvertedFile[indstore][2])
-    print("Motherboard:\t ",ConvertedFile[indstore][3])
+    print("Hard drive:\t ",ConvertedFile[indstore][3])
     print("PC case:\t ",ConvertedFile[indstore][4])
     print("Power Supply:\t ",ConvertedFile[indstore][5])
     print("Graphics Card:\t ",ConvertedFile[indstore][6])
@@ -96,8 +96,9 @@ def FindPortableMatch(MyType):
 
     infoList = []
     infoList.append("Since you only do light tasks such as web browsing. Most computer today can handle it just fine, so we chose something most fitting to your budget and size")
-    infoList.append("Many laptops fit your use case, most computers that have a recent cpu with more than 4 cores can handle the tasks you will give it, and 8GBs of RAM would be enough, we choses one most fitting to your price and form factor")      
-    infoList.append("You use your computer for intense tasks, so you would need a fast processor with 6 cores or more.You would also need at least 16GBs of memories in order to store large amounts of temporary informataion.")
+    infoList.append("Many laptops fit your use case, most computers that have a recent cpu with at least 4 cores can handle the tasks you will give it, and 8GBs of RAM, with 256GB of storage would be enough, so we choses one most fitting to your price and form factor")      
+    infoList.append("You want to play games with you computer. So other than having a fast CPU, large RAM and storage, you also need a dedicated graphics card, we'll make a few recommendations based on your budget")
+    infoList.append("You use your computer for intense tasks, so you would need a fast processor with 6 cores or more.You would also need at least 16GBs of memories and 512GB of storage in order to store large amounts of temporary informataion.")
 
     ConvertedFile = myFile.to_numpy()
     for y in range(len(ConvertedFile)):
