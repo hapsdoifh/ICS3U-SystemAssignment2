@@ -55,8 +55,18 @@ def getOS():
 
 def FindDesktopMatch(MyType):
     print("With desktops, you have a lot more opetions to customize the computer's specifications to your usage")
-    print("We'll recommend a few combinations of hardware however you can match these however you want")
-    
+    print("We'll recommend a few combinations of hardware however you can match them however you want")
+    myFile=pandas.read_excel("Desktop.xlsx")
+    ConvertedFile = myFile.to_numpy()
+    indstore = 0
+    for y in range(0,len(ConvertedFile),2):
+        if y == 0:
+            min = abs(ConvertedFile[y][5]-MyType.Price)
+            continue
+        if abs(ConvertedFile[y][5]-MyType.Price) < min:
+            min = abs(ConvertedFile[y][5]-MyType.Price)
+            indstore=y
+    return ConvertedFile[y]
 
 def FindPortableMatch(MyType):
     if UsageList[MyType.Usage-1] == "Desktop":
@@ -98,9 +108,7 @@ def FindPortableMatch(MyType):
 
 def Explain():
     Part = input("Which part of the computer do you want to learn about? 1.CPU 2.RAM 3.Storage 4.GPU 5.Motherboard 6.PSU(desktop only)")
-    
-    
-    pass
+    print(ExplainDict[Part])
 
 
 def main():
