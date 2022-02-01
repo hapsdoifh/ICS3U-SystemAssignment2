@@ -45,7 +45,7 @@ def getUsage():
     2.Programming IDE such as <visual studio Code> 4.Modern Games: 3.Large programs like Video editing or 3D modeling: "))
     return Usage
     
-def getType():
+def GetPortability():
     Portability = int(input("\nDo you need your computer to be portable to work on the go? 1. Extremely small and light 2.Bigger but still portable 3. Big and Heavy 4.Desktop: "))
     return Portability
 
@@ -53,24 +53,40 @@ def getOS():
     Portability = int(input("\nWhat is your preferred operating system? 1. Windows 2.MacOS 3.IpadOS 4.Android: "))
     return PortabilityList[Portability-1]
 
+
 def FindDesktopMatch(MyType):
     print("With desktops, you have a lot more opetions to customize the computer's specifications to your usage")
     print("We'll recommend a few combinations of hardware however you can match them however you want")
     myFile=pandas.read_excel("Desktop.xlsx")
     ConvertedFile = myFile.to_numpy()
     indstore = 0
-    for y in range(0,len(ConvertedFile),2):
-        if y == 0:
-            min = abs(ConvertedFile[y][5]-MyType.Price)
-            continue
-        if abs(ConvertedFile[y][5]-MyType.Price) < min:
-            min = abs(ConvertedFile[y][5]-MyType.Price)
-            indstore=y
-    return ConvertedFile[y]
+    y=1
+    while y in range(len(ConvertedFile)):
+        if y == 1:
+            min = abs(ConvertedFile[y][7]-MyType.Price)
+            y+=1
+        elif abs(ConvertedFile[y][7]-MyType.Price) < min:
+            min = abs(ConvertedFile[y][7]-MyType.Price)
+            indstore=y-1
+        while ConvertedFile[y-1][0] != '!' and y < len(ConvertedFile):
+            y+=1
+        y+=1
+    print()
+    print("This is your choice:")
+    print("CPU:\t\t ",ConvertedFile[indstore][0])
+    print("Motherboard:\t ",ConvertedFile[indstore][1])
+    print("RAM:\t\t ",ConvertedFile[indstore][2])
+    print("Motherboard:\t ",ConvertedFile[indstore][3])
+    print("PC case:\t ",ConvertedFile[indstore][4])
+    print("Power Supply:\t ",ConvertedFile[indstore][5])
+    print("Graphics Card:\t ",ConvertedFile[indstore][6])
+    print("Price:\t ",ConvertedFile[indstore+1][7])
+    print()
 
 def FindPortableMatch(MyType):
-    if UsageList[MyType.Usage-1] == "Desktop":
+    if PortabilityList[MyType.portable] == "Desktop":
         FindDesktopMatch(MyType)
+        return 0
     matchingList = []
     recommendlist = []
     if MyType.OS != '':
@@ -120,7 +136,7 @@ def main():
         elif action == "2":
             MyType.Usage = getUsage()
         elif action == '3':
-            MyType.portable = getType() 
+            MyType.portable = GetPortability() 
         elif action == '4':
             MyType.OS = getOS()
         elif action == '5':
